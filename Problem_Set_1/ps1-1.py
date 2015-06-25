@@ -8,7 +8,9 @@ For example, if s = 'azcbobobegghakl', your program should print:
 
 Number of vowels: 5
 '''
-s = 'azcbobobegghakl'
+# s = 'azcbobobegghakl'
+s = 'pethrworig'
+
 
 def counting_Vowels(s):
 	count = 0
