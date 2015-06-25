@@ -11,3 +11,8 @@ Answers to Problem Sets of [6.00.1x Introduction to Computer Science and Program
 1. PAYING THE MINIMUM
 * PAYING DEBT OFF IN A YEAR
 *  USING BISECTION SEARCH TO MAKE THE PROGRAM FASTER
+
+###Problem Set 3
+
+1. RADIATION EXPOSURE
+2. A WORDGAME: [HANGMAN](http://en.wikipedia.org/wiki/Hangman%20%28game%29)
