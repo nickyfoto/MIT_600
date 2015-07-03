@@ -10,7 +10,7 @@ SCRABBLE_LETTER_VALUES = {
     'a': 1, 'b': 3, 'c': 3, 'd': 2, 'e': 1, 'f': 4, 'g': 2, 'h': 4, 'i': 1, 'j': 8, 'k': 5, 'l': 1, 'm': 3, 'n': 1, 'o': 1, 'p': 3, 'q': 10, 'r': 1, 's': 1, 't': 1, 'u': 1, 'v': 4, 'w': 4, 'x': 8, 'y': 4, 'z': 10
 }
 total = 0
-last = {}
+# last = {}
 
 
 def loadWords():
@@ -28,6 +28,8 @@ def displayHand(hand):
         for j in range(hand[letter]):
              print letter,              # print all on the same line
     print
+    return #letter
+        
 
 def getWordScore(word, n):
     result = 0
@@ -79,14 +81,13 @@ def calculateHandlen(hand):
 
 def playHand(hand, wordList, n):
     global total
-    print "current hand:",
+    print "current hand: ",
     displayHand(hand)
     word = raw_input('Enter word, or a "." to indicate that you are finished: ')
     if word == '.':
         print "Goodbye! Total score: %d points." % total
         total = 0
         print
-        playGame(wordList)
     else:
         if isValidWord(word, hand, wordList): 
             score = getWordScore(word, n)
@@ -121,24 +122,28 @@ def dealHand(n):
     return hand
 
 def playGame(wordList):
-    global last
-    cmd = raw_input("Enter n to deal a new hand, r to replay the last hand, or e to end game: ")
-    if cmd == 'r':
-        if len(last) == 0:
-            print "You have not played a hand yet. Please play a new hand first!"
-            print
-            return playGame(wordList)
+    last = {}
+    def prompt(last):
+        result = raw_input("Enter n to deal a new hand, r to replay the last hand, or e to end game: ")
+        if result == 'r':
+            if len(last) == 0:
+                print "You have not played a hand yet. Please play a new hand first!"
+                print
+                prompt(last)
+            else:
+                playHand(last, wordList, HAND_SIZE)
+                prompt(last)
+        elif result == 'n':
+            last = dealHand(HAND_SIZE)
+            playHand(last, wordList, HAND_SIZE)
+            prompt(last)
+        elif result == 'e':
+            pass
         else:
-            return playHand(last, wordList, HAND_SIZE)
-    elif cmd == 'n':
-        last = dealHand(HAND_SIZE)
-        return playHand(last, wordList, HAND_SIZE)
-    elif cmd == 'e':
-        pass
-    else:
-        print "Invalid command."
-        return playGame(wordList)
-
+            print "Invalid command."
+            print
+            prompt(last)
+    prompt(last)
 
 wordList = loadWords()
 # playHand({'a': 1, 'z': 1}, wordList, 2)

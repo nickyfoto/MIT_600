@@ -16,6 +16,8 @@ SCRABBLE_LETTER_VALUES = {
     'a': 1, 'b': 3, 'c': 3, 'd': 2, 'e': 1, 'f': 4, 'g': 2, 'h': 4, 'i': 1, 'j': 8, 'k': 5, 'l': 1, 'm': 3, 'n': 1, 'o': 1, 'p': 3, 'q': 10, 'r': 1, 's': 1, 't': 1, 'u': 1, 'v': 4, 'w': 4, 'x': 8, 'y': 4, 'z': 10
 }
 
+total = 0
+last = {}
 # -----------------------------------
 # Helper code
 # (you don't need to understand this helper code)
@@ -238,33 +240,42 @@ def playHand(hand, wordList, n):
     """
     # BEGIN PSEUDOCODE <-- Remove this comment when you code this function; do your coding within the pseudocode (leaving those comments in-place!)
     # Keep track of the total score
-    
+    global total
     # As long as there are still letters left in the hand:
-    
+    if calculateHandlen(hand) > 0:
         # Display the hand
-        
+        print "current hand:",
+        displayHand(hand)
         # Ask user for input
-        
+        word = raw_input('Enter word, or a "." to indicate that you are finished: ')
         # If the input is a single period:
-        
+        if word == '.':
             # End the game (break out of the loop)
-
-            
+            print "Goodbye! Total score: %d points." % total
+            print
+            total = 0
+            # return total            
         # Otherwise (the input is not a single period):
-        
+        else:
             # If the word is not valid:
-            
+            if isValidWord(word, hand, wordList) == False:
                 # Reject invalid word (print a message followed by a blank line)
-
+                print "Invalid word, please try again."
+                print
+                playHand(hand, wordList, n)
             # Otherwise (the word is valid):
-
+            else:
                 # Tell the user how many points the word earned, and the updated total score, in one line followed by a blank line
-                
+                total = total+int(getWordScore(word, n))
+                print "%s earned %d points. Total: %d points" % (word, int(getWordScore(word, n)), total)
+                print 
                 # Update the hand 
-                
-
+                playHand(updateHand(hand, word), wordList, n)
     # Game is over (user entered a '.' or ran out of letters), so tell user the total score
-
+    else:
+        print "Run out of letters. Total score: %d points." % total
+        total = 0
+        return total
 
 #
 # Problem #5: Playing a game
@@ -283,8 +294,26 @@ def playGame(wordList):
     2) When done playing the hand, repeat from step 1    
     """
     # TO DO ... <-- Remove this comment when you code this function
-    print "playGame not yet implemented." # <-- Remove this line when you code the function
-   
+    # print "playGame not yet implemented." # <-- Remove this line when you code the function
+    global last
+    cmd = raw_input("Enter n to deal a new hand, r to replay the last hand, or e to end game: ")
+    if cmd == 'r':
+        if len(last) == 0:
+            print "You have not played a hand yet. Please play a new hand first!"
+            print
+            playGame(wordList)
+        else:
+            playHand(last, wordList, HAND_SIZE)
+            playGame(wordList)
+    elif cmd == 'n':
+        last = dealHand(HAND_SIZE)
+        playHand(last, wordList, HAND_SIZE)
+        playGame(wordList)
+    elif cmd == 'e':
+        pass
+    else:
+        print "Invalid command."
+        playGame(wordList)
 
 
 
