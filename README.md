@@ -18,3 +18,6 @@ Answers to Problem Sets of [6.00.1x Introduction to Computer Science and Program
 
 1. RADIATION EXPOSURE
 2. A WORDGAME: [HANGMAN](http://en.wikipedia.org/wiki/Hangman%20%28game%29)
+
+###Problem Set 4
+1. [A WORD GAME](https://courses.edx.org/courses/course-v1:MITx+6.00.1x_6+2T2015/courseware/Week_4/Problem_Set_4/)
