@@ -21,3 +21,7 @@ Answers to Problem Sets of [6.00.1x Introduction to Computer Science and Program
 
 ###Problem Set 4
 1. [A WORD GAME](https://courses.edx.org/courses/course-v1:MITx+6.00.1x_6+2T2015/courseware/Week_4/Problem_Set_4/)
+
+###Problem Set 6
+1. [HAIL CAESAR!](https://courses.edx.org/courses/course-v1:MITx+6.00.1x_6+2T2015/courseware/Week_6/Problem_Set_5/)
+2. [DECRYPTION (FINDBESTSHIFT)](https://courses.edx.org/courses/course-v1:MITx+6.00.1x_6+2T2015/courseware/Week_6/Problem_Set_5/)
