@@ -16,7 +16,13 @@ def reverseString(aStr):
     returns: a reversed string
     """
     ### TODO.
+    if len(aStr) == 2:
+        return aStr[-1] + aStr[0]
+    else:
+        return aStr[-1] + reverseString(aStr[0:len(aStr)-1])
+    # return aStr[::-1]
 
+# print reverseString('1234')
 #
 # Problem 4: X-ian
 #
@@ -37,7 +43,18 @@ def x_ian(x, word):
     returns: True if word is x_ian, False otherwise
     """
     ###TODO.
+    if len(x) == 2:
+        if word.index(x[0]) < word.index(x[1]):
+            return True
+        else:
+            return False
+    else:
+        return x_ian(x[:2], word) and x_ian(x[1:], word)
 
+        
+# print x_ian('eric', 'meritocracy')
+# print x_ian('eric', 'cerium')
+# print x_ian('john', 'mahjong')
 #
 # Problem 5: Typewriter
 #
@@ -53,3 +70,19 @@ def insertNewlines(text, lineLength):
     returns: a string, with newline characters inserted appropriately. 
     """
     ### TODO.
+    if len(text) < 70:
+        return text
+    else:
+        p = text[lineLength:].index(' ')
+        # return p
+        return text[:lineLength] + text[lineLength:][p].replace(' ','\n') + insertNewlines(text[lineLength+p+1:], lineLength)
+            
+            # return text[:lineLength] + text[lineLength:][p].replace(' ','\n') + insertNewlines(text[lineLength+1:], lineLength)
+        # p = text[lineLength:].index(' ')
+        # return (text[:lineLength] + (text[lineLength + p]).replace(' ','\n') + insertNewlines(text[(lineLength):], lineLength))
+
+text = "Nonsense words: sight dead wooden feed current almost salt nature gate tear employee expect program membership governor ground connect in pad stripe crowd frighten year headdress passenger quantity elastic march encourage deafen moon bleed net tailor international"
+lineLength = 70
+
+print insertNewlines(text, lineLength)
+
