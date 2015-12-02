@@ -37,4 +37,10 @@
 ##Introduction to Computational Thinking and Data Science
 
 ###Problem Set 2
-1. iRobot Simulation
+* iRobot Simulation
+
+###Problem Set 3
+* Simulating the Spread of Disease and Virus Population Dynamics 
+
+###Problem Set 4
+* TREATMENT ON PATIENT DISEASE
