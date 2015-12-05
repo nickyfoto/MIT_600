@@ -44,3 +44,9 @@
 
 ###Problem Set 4
 * TREATMENT ON PATIENT DISEASE
+
+###Problem Set 5
+* MIT campus map
+
+###Problem Set 6
+* City Clustering 
